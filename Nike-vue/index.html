@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>To-do App</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="C:/Web Projects/js/jquery-3.2.1.js"></script>
+        <link href="css/mdb.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+        <div class="container justify-content-center mt-4" id="bod">
+              <div class="jumbotron text-center text-light bg-primary" >
+                      <p class="display-4 " >Let's get things done!</p>
+                      <div class="lead">
+                        <div class="btn-group">
+                                <button class="btn border border-light  text-success" v-on:click="formed=!formed" >Add new activity </button>
+                                <button class="btn border text-danger border-light" v-on:click.prevent="clearList()">Clear all acti vities </button>
+                        </div>
+                        <p class="lead my-4 blockquote">{{checks}} Done</p>
+                      </div>
+              </div>
+              <form class="form form-inline justify-content-center" v-show="formed">
+                        <div class="form-group">
+                                <input type="text" v-model.enter="work" ref="in" class="form-control px-4 mr-2" placeholder="What's the activity?" />
+                                <button class="btn btn-success" type="submit" v-on:click.prevent="addition(work)">Add to List </button>
+                        </div>
+              </form>
+              <div id="list" class="my-2 p-2 text-center border border-primary rounded ">
+                  
+                      <table class="table table-hover table-responsive-sm" v-show="formed"> 
+                                <thead>
+                                        <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Activity</th>
+                                                <th scope="col"></th>
+                                                <th scope="col"></th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+
+                                        <tr v-for="(act,index) in activities" >
+                                                <th scope="row">{{index + 1}}</th>
+                                                <td>{{act}}</td>
+                                                <td><label class="form-check-label rounded form-check-inline p-2 text-dark bg-success" >
+                                                        Done?
+                                                        <input type="checkbox" class="pl-2 form-check-input form-check-input-lg"/>
+                                                </label></td>
+                                                <td>
+                                                        <button type="button" class="close" v-on:click="removeItem({index})">
+                                                        <span  title="Delete this Entry" data-toggle="tooltip" >&times;</span>
+                                                        </button>
+                                                </td>
+                                        </tr>
+                                       
+                                </tbody>
+                        </table>
+                    
+              </div>
+              
+             
+        </div>
+
+        <!-- Optional JavaScript And JQuery -->
+        <script src="C:/Web Projects/js/jquery-3.2.1.js"></script>
+        <script src="C:/Users/uyiano/Desktop/Play/Nike-vue/work.js"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>
