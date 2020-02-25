@@ -8,7 +8,7 @@ let one = new Vue({
                 activities: []
         },
         created(){
-                 localStorage.getItem('acts') ? this.initialize(): []
+                 localStorage.getItem('acts') ? this.initialize(): [];
         },
         methods:{
                 initialize:function(){
