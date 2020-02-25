@@ -7,25 +7,32 @@ let one = new Vue({
                 green:false,
                 activities: []
         },
-        methods: {
+        created(){
+                 localStorage.getItem('acts') ? this.initialize(): [];
+        },
+        methods:{
+                initialize:function(){
+                        this.activities = JSON.parse(localStorage.getItem('acts'))
+                        this.formed = true;
+                },
                addition:function(item){
-            
+                      
                        if(item!==""){
-                               this.activities.push(item);     
-                               this.work=""; 
+                               this.work = ""; 
+                               this.activities.push(item)
+                               if (window.localStorage) {
+                                       localStorage.setItem('acts', JSON.stringify(this.activities)) 
+                                       //this.activities = JSON.parse(localStorage.getItem('acts'))
+                               }    
                        }
                        
                },
                removeItem:function(data){
                        this.activities.pop(data);
+                       localStorage.setItem('acts', JSON.stringify(this.activities))
                },
                 clearList:function(){
-                        for(var ey=0;ey<this.activities.length;ey++){
-                                do{
-                                        this.activities.pop(ey);
-                                } while(this.activities.length>0);
-                               
-                        }
+                       localStorage.clear('acts')
                 }
         }
        
